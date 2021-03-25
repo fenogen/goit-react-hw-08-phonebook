@@ -14,6 +14,7 @@ import {
   actFilterListRequest,
 } from './actions';
 
+
 const getAllContacts = () => dispatch => {
   dispatch(actGetListRequest());
   axios

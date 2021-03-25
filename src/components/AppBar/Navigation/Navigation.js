@@ -21,13 +21,13 @@ export default function Navigation() {
       >
         Registration
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to={route.login}
         className={style.navLink}
         activeClassName={style.navLink__active}
       >
         Login
-      </NavLink>
+      </NavLink> */}
     </nav>
   );
 }

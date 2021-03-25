@@ -1,6 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
 
 import {
+  actRegister,
+  actRegisterError,
+  actRegisterRequest,
   actGetList,
   actGetListError,
   actGetListRequest,

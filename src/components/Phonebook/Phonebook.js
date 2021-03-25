@@ -9,7 +9,7 @@ const Phonebook = () => {
 
     return (
       <div className={style.list}>
-        <h1 className={style.list__title}>Phonebook with Redux</h1>
+        <h1 className={style.list__title}>Phonebook</h1>
         <Form />
         <Filter />
         <ContactList />

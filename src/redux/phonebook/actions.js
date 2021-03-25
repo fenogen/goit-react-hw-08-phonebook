@@ -1,7 +1,11 @@
 import { createAction } from '@reduxjs/toolkit';
 
-//----------------------------------------------------------> Если без Redux-Toolkit
-// import {CREATE, DELETE, FILTER} from './types';
+
+// ------------------------------------------------------> REGISTER User
+
+const actRegister = createAction('phonebook/Register/SUCCSESS');
+const actRegisterError = createAction('phonebook/Register/ERROR');
+const actRegisterRequest = createAction('phonebook/Register/REQUEST');
 
 // ------------------------------------------------------> GET Collection State
 
@@ -28,6 +32,9 @@ const actFilterListError = createAction('phonebook/filter/ERROR');
 const actFilterListRequest = createAction('phonebook/filter/REQUEST');
 
 export {
+  actRegister,
+  actRegisterError,
+  actRegisterRequest,
   actGetList,
   actGetListError,
   actGetListRequest,
