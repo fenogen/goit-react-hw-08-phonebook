@@ -41,7 +41,7 @@ class RegisterPage extends Component {
   fnSubmit = event => {
     //----------------------> Сбросили перезагрузку страницы
     event.preventDefault();
-    //   this.props.disFnSubmit(this.state)
+    this.props.disFnRegister(this.state)
     this.setState({ ...this.defaultState }); //---> сбросили значение в Инпуте
     console.log(this.state);
   };

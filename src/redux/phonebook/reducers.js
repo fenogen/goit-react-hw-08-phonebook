@@ -48,6 +48,26 @@ const loadingReducer = createReducer(false, {
 }
 )
 
+// --------------------------------------------------> Authorization-Token
+const authorizationReducer = createReducer(false, {
+  // [actRegisterRequest]: () => true,
+  [actRegister]: () => true,
+  [actRegisterError]: () => false,
+}
+)
+
+// const initialUser = {
+//   Authorized: ''
+// }
+
+// --------------------------------------------------> State - User
+const userReducer = createReducer(null, {
+  [actRegister]: (state, action) => action.payload
+}
+)
+
+// --------------------------------------------------> State - Authorization
+
 // --------------------------------------------------> State - Collection
 
 const collectionReducer = createReducer([], {
@@ -68,4 +88,4 @@ const filterReducer = createReducer('', {
   }
 )
 
-export { collectionReducer, filterReducer, loadingReducer};
+export { userReducer, authorizationReducer, collectionReducer, filterReducer, loadingReducer};

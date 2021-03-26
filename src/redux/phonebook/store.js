@@ -14,7 +14,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import { collectionReducer, filterReducer, loadingReducer } from './reducers';
+import {userReducer, authorizationReducer,  collectionReducer, filterReducer, loadingReducer } from './reducers';
 
 // ----------------------- Подключение PERSIST (см.доки redux-persist):
 // const persistConfig = {
@@ -33,6 +33,8 @@ const middlewareNew = [
 ];
 
 const rootReducer = combineReducers({
+  user: userReducer,
+  isAuthorized: authorizationReducer,
   contacts: collectionReducer,
   filterValue: filterReducer,
   loading: loadingReducer,
@@ -44,6 +46,7 @@ const store = configureStore({
   reducer: rootReducer,
   middleware: middlewareNew,
 });
+
 
 // const store = configureStore({
 //     reducer: persistedReducer,
