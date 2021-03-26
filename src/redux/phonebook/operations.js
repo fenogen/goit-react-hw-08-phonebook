@@ -14,14 +14,54 @@ import {
   actFilterListRequest,
 } from './actions';
 
+axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/"
 
-const getAllContacts = () => dispatch => {
+
+// -------------------> Автоматически записали наш токен
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  }
+}
+
+const getAllContacts  = () => (dispatch, getState) => {
+  // const { token: persistedReducer } = getState();
+  const savedToken = getState().token
+
+  // -------------------> Проверили есть ли токен в localstorage
+  if (!savedToken) {
+    return
+  }
+  token.set(savedToken)
+
   dispatch(actGetListRequest());
   axios
-    .get('http://localhost:4040/contacts')
+    .get('/contacts')
     .then(responce => dispatch(actGetList(responce.data)))
     .catch(error => dispatch(actGetListError(error)));
 };
+
+
+// const getAllContacts = () => dispatch => {
+//   token.set()
+//   dispatch(actGetListRequest());
+//   axios
+//     .get('/contacts')
+//     .then(responce => dispatch(actGetList(responce.data)))
+//     .catch(error => dispatch(actGetListError(error)));
+// };
+
+
+// const getAllContacts = () => dispatch => {
+//   dispatch(actGetListRequest());
+//   axios
+//     .get('/contacts')
+//     .then(responce => dispatch(actGetList(responce.data)))
+//     .catch(error => dispatch(actGetListError(error)));
+// };
 
 const addContact = contact => dispatch => {
   dispatch(actAddItemRequest());

@@ -1,5 +1,9 @@
 import { createSelector } from "reselect";
 
+
+const selAuthorization = state => state.isAuthorized;
+// const selToken = state => state.user.token;
+
 const selContacts = state => state.contacts;
 const selFilterValue = state => state.filterValue;
 const selLoadingStatus = state => state.loading;
@@ -28,4 +32,4 @@ const selRenderFilter = createSelector(
 
 
 
-export { selContacts, selFilterValue, selLoadingStatus, selRenderFilter };
+export { selAuthorization, selContacts, selFilterValue, selLoadingStatus, selRenderFilter };

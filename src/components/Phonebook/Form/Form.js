@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import style from './Form.module.css';
 
 import { getAllContacts, addContact } from '../../../redux/phonebook/operations';
-import { selContacts} from '../../../redux/phonebook/selectors';
+import { selContacts, selToken} from '../../../redux/phonebook/selectors';
 
 
 class Form extends Component {
@@ -23,6 +23,7 @@ class Form extends Component {
 
   componentDidMount() {
     this.props.disGetAllContacts()
+    // console.log(`консолю токен ${this.props.token}`)
   }
 
   // ----------------------------> Ф-я записи значений инпута в State
@@ -94,7 +95,8 @@ class Form extends Component {
 }
 
 const mapStateToProps = state => ({
-  contacts: selContacts(state)
+  contacts: selContacts(state),
+  // token: selToken(state),
 });
 
 const mapDispatchToProps = dispatch => ({

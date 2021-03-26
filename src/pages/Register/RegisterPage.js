@@ -8,16 +8,19 @@ import './../../App.css';
 
 class RegisterPage extends Component {
   defaultState = {
-    name: '',
-    email: '',
-    password: '',
+      name: '',
+      email: '',
+      password: '',
+  
     // agreement: false,
   };
 
   state = {
-    name: '',
-    email: '',
-    password: '',
+      name: '',
+      email: '',
+      password: '',
+  
+    // agreement: '',
   };
 
   // ----------------------------> Ф-я записи значений инпута в State
@@ -28,12 +31,12 @@ class RegisterPage extends Component {
     const name = input.name;
 
     this.setState({
-      [name]: value,
+        [name]: value,
     });
     };
     
   // ----------------------------> Ф-я записи значений chekbox в State
-  //    fnTargetCheckbox = event => {
+  // fnTargetCheckbox = event => {
   //        this.setState({ agreement: event.target.checked })
   //     }
 
@@ -82,16 +85,16 @@ class RegisterPage extends Component {
             value={this.state.password} // для обнуления в инпуте
             onChange={this.fnInputTarget}
           />
-          <label htmlFor="agreement">I agree with the license conditions</label>
+          {/* <label htmlFor="agreement">I agree with the license conditions</label>
           <input
             className={style.newForm__name}
             id="agreement"
             required
             type="checkbox"
             name="agreement"
-            value={this.state.agreement}
-            // onChange={this.fnTargetCheckbox}
-          ></input>
+            checked={this.state.agreement}
+            onChange={this.fnTargetCheckbox}
+          ></input> */}
 
           <button className={style.newForm__submit} type="submit">
             Send

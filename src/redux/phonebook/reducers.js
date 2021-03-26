@@ -50,21 +50,32 @@ const loadingReducer = createReducer(false, {
 
 // --------------------------------------------------> Authorization-Token
 const authorizationReducer = createReducer(false, {
-  // [actRegisterRequest]: () => true,
   [actRegister]: () => true,
   [actRegisterError]: () => false,
+
+  [actGetList]: () => true,
+  [actGetListError]: () => false,
 }
 )
 
-// const initialUser = {
-//   Authorized: ''
-// }
+// const initialUser = [
+//   { token: "" },
+// ]
 
 // --------------------------------------------------> State - User
-const userReducer = createReducer(null, {
-  [actRegister]: (state, action) => action.payload
+// const userReducer = createReducer(initialUser, {
+//   [actRegister]: (state, action) => [...state, action.payload.user, action.payload.token]
+// }
+// )
+
+const tokenReducer = createReducer(null, {
+  [actRegister]: (state, action) => action.payload.token
 }
 )
+// const userReducer = createReducer(null, {
+//   [actRegister]: (state, action) => action.payload
+// }
+// )
 
 // --------------------------------------------------> State - Authorization
 
@@ -88,4 +99,4 @@ const filterReducer = createReducer('', {
   }
 )
 
-export { userReducer, authorizationReducer, collectionReducer, filterReducer, loadingReducer};
+export { tokenReducer, authorizationReducer, collectionReducer, filterReducer, loadingReducer};
