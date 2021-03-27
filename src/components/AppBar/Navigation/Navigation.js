@@ -2,12 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import route from '../../../routes/routes';
+
 import { selAuthorization } from '../../../redux/phonebook/selectors';
-import {logout} from './../../../redux/phonebook/operations'
+import { logout } from './../../../api/operation-register'
+
+import UserMenu from '../UserMenu/UserMenu';
 
 import style from './Navigation.module.css';
-import route from '../../../routes/routes';
-import UserMenu from '../UserMenu/UserMenu';
 
 function Navigation({ isAuthorized, disLogout}) {
   return (

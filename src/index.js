@@ -1,4 +1,5 @@
 import 'modern-normalize/modern-normalize.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -7,7 +8,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import App from './App';
 
 import { store, storeWithPersister } from './redux/phonebook/store';
-// import { store } from './redux/phonebook/store';
 
 ReactDOM.render(
   <React.StrictMode>

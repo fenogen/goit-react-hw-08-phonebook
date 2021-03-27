@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-
-import style from './../../components/Phonebook/Form/Form.module.css';
-import './../../App.css';
 import { connect } from 'react-redux';
 
 import {loginUser} from './../../api/operation-register'
+
+import style from './../../components/Phonebook/Form/Form.module.css';
+import './../../App.css';
 
 class LoginPage extends Component {
 

@@ -1,19 +1,17 @@
 import React, { Suspense, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import route from './routes/routes';
 import PrivateRoute from './routes/PrivateRoute';
 import PublickRoute from './routes/PublickRoute';
-// import { PrivateRoute, PublickRoute }  from './routes/restrictedRoutes'
+
+import { getAllContacts} from './api/operation-register';
+import { selAuthorization} from './redux/phonebook/selectors';
 
 import AppBar from './components/AppBar/AppBar';
 
-import Phonebook from './components/Phonebook/Phonebook';
-import { getAllContacts, addContact } from './redux/phonebook/operations';
-import { selAuthorization} from './redux/phonebook/selectors';
-
 import './App.css';
-import { connect } from 'react-redux';
 
 const HomePage = lazy(() =>
   import('./pages/Home/HomePage.js' /*webpackChunkName: "HomePage"*/),
@@ -64,7 +62,6 @@ class App extends React.Component {
         >
           <AppBar />
           <Switch>
-            {/* <Route exact path={route.home} component={HomePage} /> */}
             <PublickRoute
               exact
               path={route.home}
@@ -84,9 +81,6 @@ class App extends React.Component {
               redirectTo={route.contacts}
               restricted
             />
-            {/* <Route exact path={route.login} component={LoginPage} />
-            <Route path={route.register} component={RegisterPage} /> */}
-            {/* <Route path={route.contacts} component={ContactsPage} /> */}
             <PrivateRoute
               path={route.contacts}
               component={ContactsPage}
@@ -105,7 +99,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   disGetAllContacts: () => dispatch(getAllContacts()),
-  // disGetCurentUser: () => dispatch(getCurrentUser()),
 });
 
 

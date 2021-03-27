@@ -1,17 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-import { deleteContact } from '../../../redux/phonebook/operations';
+import { deleteContact } from '../../../api/operations-get';
 import {
   selRenderFilter,
   selLoadingStatus,
 } from '../../../redux/phonebook/selectors';
-import PropTypes from 'prop-types';
 
 import ContactItem from './ContactItem';
+
 
 function ContactList({ contacts, loading, disFnDeleteItem }) {
   // ---> Условие что бы не было рендера при пустом массиве когда запущен филтр поиска
@@ -19,7 +20,6 @@ function ContactList({ contacts, loading, disFnDeleteItem }) {
     return null;
   } else {
     // console.log('ContactList')
-
     return (
       <div style={{ position: 'relative' }}>
         {/* ----------------------------Loader------------------------------- */}

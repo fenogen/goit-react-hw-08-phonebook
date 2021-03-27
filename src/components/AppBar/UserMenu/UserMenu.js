@@ -7,7 +7,7 @@ function UserMenu({ user, isAuthorized}) {
     if (isAuthorized) {
         return (
             <div>
-                <img />
+                <img alt=''/>
                 <p>Name: {user.name}</p>
                 <p>Email: {user.email}</p>
             </div>

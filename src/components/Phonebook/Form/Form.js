@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { v4 as uuidv4 } from 'uuid';
-import style from './Form.module.css';
+import { addContact } from '../../../api/operations-get';
+import { getAllContacts} from '../../../api/operation-register';
+import { selContacts, selAuthorization } from '../../../redux/phonebook/selectors';
 
-import { getAllContacts, addContact } from '../../../redux/phonebook/operations';
-import { selContacts, selToken, selAuthorization} from '../../../redux/phonebook/selectors';
+import style from './Form.module.css';
 
 
 class Form extends Component {
@@ -21,13 +21,6 @@ class Form extends Component {
     number: '',
   };
 
-  // componentDidMount() {
-  //   if (this.props.isAuthorized) {
-  //     this.props.disGetAllContacts()
-  //   }
-  //   // console.log(`консолю токен ${this.props.token}`)
-  // }
-
   // ----------------------------> Ф-я записи значений инпута в State
 
   fnInputTarget = event => {
@@ -42,15 +35,16 @@ class Form extends Component {
 
   // -------------------------> Ф-я отправки одного контакта:
   fnSubmit = event => {
-    //----------------------> Сбросили перезагрузку страницы
+    //---> Сбросили перезагрузку страницы
     event.preventDefault();
-    //-----------------------> Добавляем контакт по условию:
+    //---> Добавляем контакт по условию:
     const arrayOfContacts = this.props.contacts;
     const arrayOfNames = arrayOfContacts.map(item => item.name.toLowerCase());
 
     if (!arrayOfNames.includes(this.state.name.toLowerCase())) {
       this.props.disFnSubmit(this.state)
-      this.setState({ ...this.defaultState }); //---> сбросили значение в Инпуте
+      //---> сбросили значение в Инпуте
+      this.setState({ ...this.defaultState });
     }
 
     else {
@@ -91,7 +85,6 @@ class Form extends Component {
 const mapStateToProps = state => ({
   contacts: selContacts(state),
   isAuthorized: selAuthorization(state),
-  // token: selToken(state),
 });
 
 const mapDispatchToProps = dispatch => ({

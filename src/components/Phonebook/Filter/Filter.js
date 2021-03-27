@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { DebounceInput } from 'react-debounce-input';
 import PropTypes from 'prop-types';
-import style from '../Form/Form.module.css';
 
-import { searchContact } from '../../../redux/phonebook/operations';
+import { searchContact } from '../../../api/operations-get';
 import { selFilterValue } from '../../../redux/phonebook/selectors';
 
-function Filter({ filterValue, disFnFilterValue }) {
+import style from '../Form/Form.module.css';
+
+function Filter({ disFnFilterValue }) {
   const fnFilterTarget = event => {
     const input = event.target;
     const value = input.value;
