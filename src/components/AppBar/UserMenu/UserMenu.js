@@ -1,20 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { selCurrentUser } from './../../../redux/phonebook/selectors';
+import { selUser, selAuthorization } from './../../../redux/phonebook/selectors';
 
-function UserMenu({currentUser}) {
-    return (
-        <div>
-            <img />
-            <p>Name: { currentUser.name}</p>
-            <p>Email: { currentUser.email}</p>
-        </div>
-    )
+function UserMenu({ user, isAuthorized}) {
+    if (isAuthorized) {
+        return (
+            <div>
+                <img />
+                <p>Name: {user.name}</p>
+                <p>Email: {user.email}</p>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state) => ({
-    currentUser: selCurrentUser(state)
+    user: selUser(state),
+    isAuthorized: selAuthorization(state),
+
 })
 
 

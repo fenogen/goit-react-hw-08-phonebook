@@ -7,6 +7,12 @@ const actRegister = createAction('phonebook/Register/SUCCSESS');
 const actRegisterError = createAction('phonebook/Register/ERROR');
 const actRegisterRequest = createAction('phonebook/Register/REQUEST');
 
+// ------------------------------------------------------> LOGIN User
+
+const actLogin = createAction('phonebook/Login/SUCCSESS');
+const actLoginError = createAction('phonebook/Login/ERROR');
+const actLoginRequest = createAction('phonebook/Login/REQUEST');
+
 // ------------------------------------------------------> LOGOUT User
 
 const actLogout = createAction('phonebook/Logout/SUCCSESS');
@@ -47,6 +53,9 @@ export {
   actRegister,
   actRegisterError,
   actRegisterRequest,
+  actLogin,
+  actLoginError,
+  actLoginRequest,
   actLogout,
   actLogoutError,
   actLogoutRequest,

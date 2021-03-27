@@ -14,13 +14,13 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import {tokenReducer, userReducer, userReducerCurrent, authorizationReducer,  collectionReducer, filterReducer, loadingReducer } from './reducers';
+import {tokenReducer, userReducer, authorizationReducer,  collectionReducer, filterReducer, loadingReducer } from './reducers';
 
 // ----------------------- Подключение PERSIST (см.доки redux-persist):
 const persistConfig = {
   key: 'token',
   storage,
-  blacklist: ['filterValue', 'isAuthorized', 'contacts', 'loading']   //----> Сделали что бы filterValue не записывалось в LocalStorage
+  blacklist: ['filterValue', 'contacts', 'loading']   //----> Сделали что бы filterValue не записывалось в LocalStorage
 }
 
 // ----------------------> Применяем прослойку что бы не было ошибки в консоле (см.доки redux-persist)
@@ -43,7 +43,7 @@ const middlewareNew = [
 // const saveToken = persistReducer(persistConfig, tokenReducer)
 
 const rootReducer = combineReducers({
-  userCarrent: userReducerCurrent,
+  // userCarrent: userReducerCurrent,
   user: userReducer,
   token: tokenReducer,
   isAuthorized: authorizationReducer,

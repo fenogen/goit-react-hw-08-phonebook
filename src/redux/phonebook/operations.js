@@ -39,7 +39,7 @@ const logout = () => (dispatch) => {
 
   dispatch(actLogoutRequest());
   axios
-    .get('/users/logout')
+    .post('/users/logout')
     .then(responce => {
       token.unset()
       return dispatch(actLogout())
@@ -49,13 +49,13 @@ const logout = () => (dispatch) => {
 
 // -------------------------------------> Current User (??????????)
 
-const getCurrentUser = () => dispatch => {
-  dispatch(actCurrentUserRequest());
-  axios
-    .get('/users/current')
-    .then(responce => dispatch(actCurrentUser(responce.data)))
-    .catch(error => dispatch(actCurrentUserError(error)));
-};
+// const getCurrentUser = () => dispatch => {
+//   dispatch(actCurrentUserRequest());
+//   axios
+//     .get('/users/current')
+//     .then(responce => dispatch(actCurrentUser(responce.data)))
+//     .catch(error => dispatch(actCurrentUserError(error)));
+// };
 
 
 // -------------------------------------> All Contacts
@@ -76,17 +76,6 @@ const getAllContacts  = () => (dispatch, getState) => {
     .then(responce => dispatch(actGetList(responce.data)))
     .catch(error => dispatch(actGetListError(error)));
 };
-
-
-// const getAllContacts = () => dispatch => {
-//   token.set()
-//   dispatch(actGetListRequest());
-//   axios
-//     .get('/contacts')
-//     .then(responce => dispatch(actGetList(responce.data)))
-//     .catch(error => dispatch(actGetListError(error)));
-// };
-
 
 // const getAllContacts = () => dispatch => {
 //   dispatch(actGetListRequest());
@@ -124,4 +113,4 @@ const searchContact = name => dispatch => {
     .catch(error => dispatch(actFilterListError(error)));
 };
 
-export { logout, getCurrentUser, getAllContacts, addContact, deleteContact, searchContact};
+export { logout, getAllContacts, addContact, deleteContact, searchContact};

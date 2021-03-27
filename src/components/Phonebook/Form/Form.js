@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import style from './Form.module.css';
 
 import { getAllContacts, addContact } from '../../../redux/phonebook/operations';
-import { selContacts, selToken} from '../../../redux/phonebook/selectors';
+import { selContacts, selToken, selAuthorization} from '../../../redux/phonebook/selectors';
 
 
 class Form extends Component {
@@ -21,10 +21,12 @@ class Form extends Component {
     number: '',
   };
 
-  componentDidMount() {
-    this.props.disGetAllContacts()
-    // console.log(`консолю токен ${this.props.token}`)
-  }
+  // componentDidMount() {
+  //   if (this.props.isAuthorized) {
+  //     this.props.disGetAllContacts()
+  //   }
+  //   // console.log(`консолю токен ${this.props.token}`)
+  // }
 
   // ----------------------------> Ф-я записи значений инпута в State
 
@@ -88,6 +90,7 @@ class Form extends Component {
 
 const mapStateToProps = state => ({
   contacts: selContacts(state),
+  isAuthorized: selAuthorization(state),
   // token: selToken(state),
 });
 

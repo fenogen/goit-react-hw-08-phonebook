@@ -7,22 +7,19 @@ import { connect } from "react-redux";
 
 import { selAuthorization } from './../../redux/phonebook/selectors'
 
-const Phonebook = ({isAuthorized}) => {
+const Phonebook = ({ isAuthorized }) => {
   // console.log('Phonebook')
-
+  if (isAuthorized) {
     return (
       <div className={style.list}>
         <h1 className={style.list__title}>Phonebook</h1>
         <Form />
-        {isAuthorized && (
-          <div>
-            <Filter />
-            <ContactList />
-          </div>
-        )}
+        <Filter />
+        <ContactList />
       </div>
     )
   }
+}
 
 const mapStateToProps = state => ({
   isAuthorized: selAuthorization(state),

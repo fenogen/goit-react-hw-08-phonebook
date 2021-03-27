@@ -9,7 +9,8 @@ import PublickRoute from './routes/PublickRoute';
 import AppBar from './components/AppBar/AppBar';
 
 import Phonebook from './components/Phonebook/Phonebook';
-import { getAllContacts, addContact, getCurrentUser } from './redux/phonebook/operations';
+import { getAllContacts, addContact } from './redux/phonebook/operations';
+import { selAuthorization} from './redux/phonebook/selectors';
 
 import './App.css';
 import { connect } from 'react-redux';
@@ -30,12 +31,18 @@ const ContactsPage = lazy(() =>
 class App extends React.Component {
   
   componentDidMount() {
-    this.props.disGetAllContacts();
-    this.props.disGetCurentUser();
+    if (this.props.isAuthorized) {
+      this.props.disGetAllContacts();
+    }
+  }
+
+    componentDidUpdate() {
+    if (this.props.isAuthorized) {
+      this.props.disGetAllContacts();
+    }
   }
 
   render() {
-  // this.props.disGetAllContacts()
     return (
       <div className="App">
         <Suspense
@@ -93,13 +100,13 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  
+  isAuthorized: selAuthorization(state),
 })
 
 const mapDispatchToProps = dispatch => ({
   disGetAllContacts: () => dispatch(getAllContacts()),
-  disGetCurentUser: () => dispatch(getCurrentUser()),
+  // disGetCurentUser: () => dispatch(getCurrentUser()),
 });
 
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

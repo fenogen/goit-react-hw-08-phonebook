@@ -4,6 +4,12 @@ import {
   actRegister,
   actRegisterError,
   actRegisterRequest,
+  actLogin,
+  actLoginError,
+  actLoginRequest,
+    actLogout,
+  actLogoutError,
+  actLogoutRequest,
   actCurrentUser,
   actCurrentUserError,
   actCurrentUserRequest,
@@ -51,33 +57,48 @@ const loadingReducer = createReducer(false, {
 }
 )
 
-// --------------------------------------------------> Authorization-Token
+// --------------------------------------------------> Authorization status
 const authorizationReducer = createReducer(false, {
   [actRegister]: () => true,
   [actRegisterError]: () => false,
 
-  [actGetList]: () => true,
-  [actGetListError]: () => false,
+  [actLogin]: () => true,
+  [actLoginError]: () => false,
+
+  [actLogout]: () => false,
+  [actLogoutError]: () => true,
+
+  // [actGetList]: () => true,
+  // [actGetListError]: () => false,
 }
 )
 
-// const initialUser = [
-//   { token: "" },
-// ]
+const initialUser = {
+  name: null,
+  email: null
+}
 
 // --------------------------------------------------> State - User
-const userReducer = createReducer(null, {
-  [actRegister]: (state, action) => action.payload.user
+const userReducer = createReducer(initialUser, {
+  [actRegister]: (state, action) => action.payload.user,
+
+  [actLogin]: (state, action) => action.payload.user,
+
+  [actLogout]: (state, action) => initialUser
 }
 )
 
-const userReducerCurrent = createReducer(null, {
-  [actCurrentUser]: (state, action) => action.payload
-}
-)
+
+// const userReducerCurrent = createReducer(null, {
+//   [actCurrentUser]: (state, action) => action.payload,
+//   [actLogin]: (state, action) => action.payload
+// }
+// )
 
 const tokenReducer = createReducer(null, {
-  [actRegister]: (state, action) => action.payload.token
+  [actRegister]: (state, action) => action.payload.token,
+  [actLogin]: (state, action) => action.payload.token,
+  [actLogout]: (state, action) => null
 }
 )
 // const userReducer = createReducer(null, {
@@ -95,7 +116,8 @@ const collectionReducer = createReducer([], {
   [actDeleteItem]: (state, action) => {
     const newStateContacts = state.filter(item => item.id !== action.payload);
     return newStateContacts;
-  }
+  },
+  [actLogout]: (state, action) => [],
 }
 )
 
@@ -107,4 +129,4 @@ const filterReducer = createReducer('', {
   }
 )
 
-export { tokenReducer, userReducer, userReducerCurrent, authorizationReducer, collectionReducer, filterReducer, loadingReducer};
+export { tokenReducer, userReducer, authorizationReducer, collectionReducer, filterReducer, loadingReducer};
