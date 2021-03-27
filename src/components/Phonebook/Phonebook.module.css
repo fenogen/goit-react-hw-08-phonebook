@@ -5,10 +5,10 @@
   color: #fff;
   min-width: 350px;
   position: relative;
-  box-shadow: -16px -16px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: -16px 0px 1px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  margin-top: 64px;
+  /* margin-top: 64px; */
 }
 .list__title {
   font-size: 2.5rem;
@@ -48,4 +48,54 @@
   padding: 8px 16px;
   outline: none;
   border-radius: 1px;
+}
+
+/* Стили для Home-page (дублируют стили Form.css) */
+.newForm {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+.newForm > * {
+  font-family: inherit;
+  outline: none;
+  border-radius: 1px;
+  padding: 8px 16px;
+}
+.newForm__name {
+  border: none;
+  background-color: #fff;
+  color: #333;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.newForm__submit {
+  text-decoration: none;
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  margin-left: 16px;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.newForm__submit-unactive {
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  opacity: 0.3;
+  margin-left: 16px;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.newForm__submit:hover {
+  background-color: #fff;
+  color: #ff6b6b;
 }

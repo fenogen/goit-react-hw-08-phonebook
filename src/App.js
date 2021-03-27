@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
 
 import route from './routes/routes';
 import PrivateRoute from './routes/PrivateRoute';
@@ -45,19 +46,19 @@ class App extends React.Component {
       <div className="App">
         <Suspense
           fallback={
-            // <Loader
-            //   type="BallTriangle"
-            //   color="#00BFFF"
-            //   height={150}
-            //   width={150}
-            //   style={{
-            //     marginLeft: '50%',
-            //     transform: 'translate(-50px)',
-            //     marginTop: '15%',
-            //   }}
-            //   // timeout={3000} //3 secs
-            // />
-            <h1>Loading...</h1>
+          <Loader
+            type="ThreeDots"
+            color="rgba(255, 255, 255, 0.2)"
+            height={75}
+            width={75}
+            style={{
+              position: 'absolute',
+              top: '-45px',
+              left: '50%',
+              transform: 'translate(-50%)',
+            }}
+          />
+            // <h1>Loading...</h1>
           }
         >
           <AppBar />

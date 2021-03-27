@@ -1,29 +1,17 @@
 .flexbox {
-  /* max-width: 625px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 64px;
-  /* padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px; */
   top: 0;
   left: 0;
   position: sticky;
-  /* z-index: 1101; */
 }
 
 .flex {
-  /* max-width: 625px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 64px;
-  /* padding-right: 24px;
-  padding-left: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px; */
   top: 0;
   left: 0;
   position: sticky;
@@ -37,17 +25,10 @@
 
 .photo {
   display: block;
-  /* object-fit: contain;
-  object-position: center;
-  width: 100%;
-  height: 100%; */
   width: 30px;
   height: 30px;
   margin-right: 15px;
   margin-left: 15px;
-  /* background-color: #3f51b5; */
-  /* width: 25px; */
-  /* margin-right: 16px; */
 }
 
 .navLink {
@@ -76,6 +57,7 @@
   padding: 5px;
   min-width: 92px;
   text-align: center;
+  text-decoration: none;
 
   /*  */
   user-select: none;
