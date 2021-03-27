@@ -14,7 +14,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import {tokenReducer, authorizationReducer,  collectionReducer, filterReducer, loadingReducer } from './reducers';
+import {tokenReducer, userReducer, userReducerCurrent, authorizationReducer,  collectionReducer, filterReducer, loadingReducer } from './reducers';
 
 // ----------------------- Подключение PERSIST (см.доки redux-persist):
 const persistConfig = {
@@ -43,7 +43,8 @@ const middlewareNew = [
 // const saveToken = persistReducer(persistConfig, tokenReducer)
 
 const rootReducer = combineReducers({
-
+  userCarrent: userReducerCurrent,
+  user: userReducer,
   token: tokenReducer,
   isAuthorized: authorizationReducer,
   contacts: collectionReducer,

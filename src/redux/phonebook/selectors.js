@@ -3,6 +3,7 @@ import { createSelector } from "reselect";
 
 const selAuthorization = state => state.isAuthorized;
 // const selToken = state => state.user.token;
+const selCurrentUser = state => state.userCarrent;
 
 const selContacts = state => state.contacts;
 const selFilterValue = state => state.filterValue;
@@ -32,4 +33,4 @@ const selRenderFilter = createSelector(
 
 
 
-export { selAuthorization, selContacts, selFilterValue, selLoadingStatus, selRenderFilter };
+export { selAuthorization, selCurrentUser, selContacts, selFilterValue, selLoadingStatus, selRenderFilter };

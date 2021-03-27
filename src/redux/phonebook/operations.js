@@ -1,5 +1,11 @@
 import axios from 'axios';
 import {
+    actLogout,
+    actLogoutError,
+  actLogoutRequest,
+      actCurrentUser,
+  actCurrentUserError,
+  actCurrentUserRequest,
   actGetList,
   actGetListError,
   actGetListRequest,
@@ -26,6 +32,33 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   }
 }
+
+// -------------------------------------> Logout
+
+const logout = () => (dispatch) => {
+
+  dispatch(actLogoutRequest());
+  axios
+    .get('/users/logout')
+    .then(responce => {
+      token.unset()
+      return dispatch(actLogout())
+})
+    .catch(error => dispatch(actLogoutError(error)));
+};
+
+// -------------------------------------> Current User (??????????)
+
+const getCurrentUser = () => dispatch => {
+  dispatch(actCurrentUserRequest());
+  axios
+    .get('/users/current')
+    .then(responce => dispatch(actCurrentUser(responce.data)))
+    .catch(error => dispatch(actCurrentUserError(error)));
+};
+
+
+// -------------------------------------> All Contacts
 
 const getAllContacts  = () => (dispatch, getState) => {
   // const { token: persistedReducer } = getState();
@@ -63,28 +96,32 @@ const getAllContacts  = () => (dispatch, getState) => {
 //     .catch(error => dispatch(actGetListError(error)));
 // };
 
+// -------------------------------------> Add Contact
+
 const addContact = contact => dispatch => {
   dispatch(actAddItemRequest());
   axios
-    .post('http://localhost:4040/contacts', contact)
+    .post('/contacts', contact)
     .then(responce => dispatch(actAddItem(responce.data)))
     .catch(error => dispatch(actAddItemError(error)));
 };
 
+// -------------------------------------> Delete Contact
 const deleteContact = id => dispatch => {
   dispatch(actDeleteItemRequest());
   axios
-    .delete(`http://localhost:4040/contacts/${id}`)
+    .delete(`/contacts/${id}`)
     .then(responce => dispatch(actDeleteItem(id)))
     .catch(error => dispatch(actDeleteItemError(error)));
 };
 
+// -------------------------------------> Search Contact
 const searchContact = name => dispatch => {
     dispatch(actFilterListRequest());
     axios
-    .get(`http://localhost:4040/contacts?q=${name}`)
+    .get(`/contacts?q=${name}`)
     .then(responce => dispatch(actFilterList(name)))
     .catch(error => dispatch(actFilterListError(error)));
 };
 
-export { getAllContacts, addContact, deleteContact, searchContact};
+export { logout, getCurrentUser, getAllContacts, addContact, deleteContact, searchContact};

@@ -9,7 +9,7 @@ import PublickRoute from './routes/PublickRoute';
 import AppBar from './components/AppBar/AppBar';
 
 import Phonebook from './components/Phonebook/Phonebook';
-import { getAllContacts, addContact } from './redux/phonebook/operations';
+import { getAllContacts, addContact, getCurrentUser } from './redux/phonebook/operations';
 
 import './App.css';
 import { connect } from 'react-redux';
@@ -30,7 +30,8 @@ const ContactsPage = lazy(() =>
 class App extends React.Component {
   
   componentDidMount() {
-    this.props.disGetAllContacts()
+    this.props.disGetAllContacts();
+    this.props.disGetCurentUser();
   }
 
   render() {
@@ -97,6 +98,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   disGetAllContacts: () => dispatch(getAllContacts()),
+  disGetCurentUser: () => dispatch(getCurrentUser()),
 });
 
 

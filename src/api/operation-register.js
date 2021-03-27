@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import {
-    actRegister,
+          actRegister,
     actRegisterError,
     actRegisterRequest,
 } from './../redux/phonebook/actions'
@@ -21,6 +21,9 @@ const API = {
 // user: {name: "red", email: "7@red.com"}
 // token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVkYjU3Zjg4ZjYxOTAwMTc0OTQxZmYiLCJpYXQiOjE2MTY3NTQwNDd9.NWIlfeGOYMM6sU5nTE3--p4wMSKlf90qF2FRegMUhTw"
 // user: {name: "red", email: "12@red.com"}
+
+// user: {name: "red", email: "22@red.com"}
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDVkZTRjNjg4ZjYxOTAwMTc0OTQyNzUiLCJpYXQiOjE2MTY3NjYxNTB9.A2rNwZAncUUEEhWftc3JvJEzjDDoiPbfrs-6N6zDn9w
 
 
 // const registerUser = (page, search) => {

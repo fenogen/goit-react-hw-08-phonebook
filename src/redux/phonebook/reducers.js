@@ -4,6 +4,9 @@ import {
   actRegister,
   actRegisterError,
   actRegisterRequest,
+  actCurrentUser,
+  actCurrentUserError,
+  actCurrentUserRequest,
   actGetList,
   actGetListError,
   actGetListRequest,
@@ -63,10 +66,15 @@ const authorizationReducer = createReducer(false, {
 // ]
 
 // --------------------------------------------------> State - User
-// const userReducer = createReducer(initialUser, {
-//   [actRegister]: (state, action) => [...state, action.payload.user, action.payload.token]
-// }
-// )
+const userReducer = createReducer(null, {
+  [actRegister]: (state, action) => action.payload.user
+}
+)
+
+const userReducerCurrent = createReducer(null, {
+  [actCurrentUser]: (state, action) => action.payload
+}
+)
 
 const tokenReducer = createReducer(null, {
   [actRegister]: (state, action) => action.payload.token
@@ -99,4 +107,4 @@ const filterReducer = createReducer('', {
   }
 )
 
-export { tokenReducer, authorizationReducer, collectionReducer, filterReducer, loadingReducer};
+export { tokenReducer, userReducer, userReducerCurrent, authorizationReducer, collectionReducer, filterReducer, loadingReducer};

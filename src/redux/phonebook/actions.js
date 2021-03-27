@@ -7,6 +7,18 @@ const actRegister = createAction('phonebook/Register/SUCCSESS');
 const actRegisterError = createAction('phonebook/Register/ERROR');
 const actRegisterRequest = createAction('phonebook/Register/REQUEST');
 
+// ------------------------------------------------------> LOGOUT User
+
+const actLogout = createAction('phonebook/Logout/SUCCSESS');
+const actLogoutError = createAction('phonebook/Logout/ERROR');
+const actLogoutRequest = createAction('phonebook/Logout/REQUEST');
+
+// ------------------------------------------------------> Info of Current User
+
+const actCurrentUser = createAction('phonebook/CurrentUser/SUCCSESS');
+const actCurrentUserError = createAction('phonebook/CurrentUser/ERROR');
+const actCurrentUserRequest = createAction('phonebook/CurrentUser/REQUEST');
+
 // ------------------------------------------------------> GET Collection State
 
 const actGetList = createAction('phonebook/list_get/SUCCSESS');
@@ -35,6 +47,12 @@ export {
   actRegister,
   actRegisterError,
   actRegisterRequest,
+  actLogout,
+  actLogoutError,
+  actLogoutRequest,
+  actCurrentUser,
+  actCurrentUserError,
+  actCurrentUserRequest,
   actGetList,
   actGetListError,
   actGetListRequest,

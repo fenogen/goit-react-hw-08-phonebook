@@ -42,25 +42,17 @@ class Form extends Component {
   fnSubmit = event => {
     //----------------------> Сбросили перезагрузку страницы
     event.preventDefault();
-    //----------------------> Создали контакт
-    const CONTACT = {
-      id: uuidv4(),
-      status: true,
-      ...this.state,
-    };
     //-----------------------> Добавляем контакт по условию:
     const arrayOfContacts = this.props.contacts;
     const arrayOfNames = arrayOfContacts.map(item => item.name.toLowerCase());
 
-    if (!arrayOfNames.includes(CONTACT.name.toLowerCase())) {
-      // console.log(`Create contact: ${CONTACT.name}`)
-      // console.log(CONTACT)
-      this.props.disFnSubmit(CONTACT)
+    if (!arrayOfNames.includes(this.state.name.toLowerCase())) {
+      this.props.disFnSubmit(this.state)
       this.setState({ ...this.defaultState }); //---> сбросили значение в Инпуте
     }
 
     else {
-      alert(`Имя ${CONTACT.name} уже есть в контактах`);
+      alert(`Имя ${this.state.name} уже есть в контактах`);
     }
   };
 
