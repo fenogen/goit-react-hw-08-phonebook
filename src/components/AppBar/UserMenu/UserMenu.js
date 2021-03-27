@@ -1,27 +1,29 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
+import avatar from './../../../img/avatar9.png';
 
-import { selUser, selAuthorization } from './../../../redux/phonebook/selectors';
+import {
+  selUser,
+  selAuthorization,
+} from './../../../redux/phonebook/selectors';
 
-function UserMenu({ user, isAuthorized}) {
-    if (isAuthorized) {
-        return (
-            <div>
-                <img alt=''/>
-                <p>Name: {user.name}</p>
-                <p>Email: {user.email}</p>
-            </div>
-        )
-    }
+import style from './../Navigation/Navigation.module.css';
+
+function UserMenu({ user, isAuthorized }) {
+  if (isAuthorized) {
+    return (
+      <div className={style.flex}>
+        <p className={style.flexbox__item}>Name: {user.name}</p>
+        <img alt="" src={avatar} className={style.photo} />
+        <p className={style.flexbox__item}>Email: {user.email}</p>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = (state) => ({
-    user: selUser(state),
-    isAuthorized: selAuthorization(state),
+const mapStateToProps = state => ({
+  user: selUser(state),
+  isAuthorized: selAuthorization(state),
+});
 
-})
-
-
-
-export default connect(mapStateToProps)(UserMenu)
-
+export default connect(mapStateToProps)(UserMenu);

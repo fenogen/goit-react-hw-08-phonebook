@@ -52,7 +52,7 @@ class RegisterPage extends Component {
   render() {
     return (
       <div className="container">
-        <h3 className={style.form__title}>Registration</h3>
+        <h2 className={style.form__title}>Registration</h2>
         <form
           className={style.newForm}
           autoComplete="off"

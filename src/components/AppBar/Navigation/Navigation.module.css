@@ -1,17 +1,53 @@
 .flexbox {
   /* max-width: 625px; */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   min-height: 64px;
-  padding-right: 24px;
+  /* padding-right: 24px;
   padding-left: 24px;
   padding-top: 12px;
-  padding-bottom: 12px;
+  padding-bottom: 12px; */
   top: 0;
   left: 0;
   position: sticky;
-  z-index: 1101;
+  /* z-index: 1101; */
+}
+
+.flex {
+  /* max-width: 625px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 64px;
+  /* padding-right: 24px;
+  padding-left: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px; */
+  top: 0;
+  left: 0;
+  position: sticky;
+  width: 100%;
+}
+
+.flexbox__item {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.photo {
+  display: block;
+  /* object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 100%; */
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  margin-left: 15px;
+  /* background-color: #3f51b5; */
+  /* width: 25px; */
+  /* margin-right: 16px; */
 }
 
 .navLink {
@@ -29,4 +65,25 @@
 .navLink__active {
   background-color: #3f51b5;
   color: darkorange;
+}
+
+.newForm__submit {
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  /* margin-left: 16px; */
+  margin: 0;
+  padding: 5px;
+  min-width: 92px;
+  text-align: center;
+
+  /*  */
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.newForm__submit:hover {
+  background-color: #fff;
+  color: #ff6b6b;
 }
