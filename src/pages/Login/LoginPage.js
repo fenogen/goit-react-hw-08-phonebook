@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
 
-import {loginUser} from './../../api/operation-register'
+import { loginUser } from './../../api/operation-register';
+import { selLoadingStatus } from './../../redux/phonebook/selectors';
 
 import style from './../../components/Phonebook/Form/Form.module.css';
 import './../../App.css';
 
 class LoginPage extends Component {
-
   defaultState = {
     email: '',
     password: '',
@@ -34,16 +35,17 @@ class LoginPage extends Component {
   fnSubmit = event => {
     //----------------------> Сбросили перезагрузку страницы
     event.preventDefault();
-    this.props.disFnLogin(this.state)
+    this.props.disFnLogin(this.state);
     this.setState({ ...this.defaultState }); //---> сбросили значение в Инпуте
-    console.log(this.state);
   };
 
   render() {
     return (
       <div className="container">
         <h2 className={style.form__title}>Login</h2>
-        <form className={style.newForm} autoComplete="off"
+        <form
+          className={style.newForm}
+          autoComplete="off"
           onSubmit={this.fnSubmit}
         >
           <input
@@ -66,20 +68,41 @@ class LoginPage extends Component {
           />
           <button className={style.newForm__submit} type="submit">
             Send
-        </button>
+          </button>
         </form>
+        {/* ----------------------------Loader------------------------------- */}
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+          }}
+        >
+          {this.props.loading && (
+            <Loader
+              type="ThreeDots"
+              color=" #fff"
+              height={75}
+              width={75}
+              style={{
+                position: 'absolute',
+                top: '0',
+                left: '50%',
+                transform: 'translate(-50%)',
+              }}
+            />
+          )}
+        </div>
       </div>
     );
   }
 }
 
-// const mapStateToProps = (state) => ({
-    
-// })
+const mapStateToProps = state => ({
+  loading: selLoadingStatus(state),
+});
 
 const mapDispatchToProps = dispatch => ({
   disFnLogin: value => dispatch(loginUser(value)),
-})
+});
 
-
-export default connect(null, mapDispatchToProps)(LoginPage)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

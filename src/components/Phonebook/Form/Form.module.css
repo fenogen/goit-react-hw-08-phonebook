@@ -33,7 +33,7 @@
   border: 1px solid #fff;
   color: #fff;
   background-color: transparent;
-  margin-left: 16px;
+  /* margin-left: 16px; */
   user-select: none;
   cursor: pointer;
   transition: all 0.2s ease;

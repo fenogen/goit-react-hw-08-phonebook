@@ -33,7 +33,11 @@ const registerUser = newUser => dispatch => {
   axios
     .post('/users/signup', newUser)
     .then(responce => dispatch(actRegister(responce.data)))
-    .catch(error => dispatch(actRegisterError(error)));
+    .catch(error => {
+      alert("Such user already exists or email is incorrectly entered")
+      return dispatch(actRegisterError(error));
+    }
+    )
 };
 
 // --------------------------------------------------> LOGIN
@@ -42,7 +46,11 @@ const loginUser = user => dispatch => {
   axios
     .post('/users/login', user)
     .then(responce => dispatch(actLogin(responce.data)))
-    .catch(error => dispatch(actLoginError(error)));
+    .catch(error => {
+      alert("You entered your email or password incorrectly, please check")
+      return dispatch(actLoginError(error));
+    }
+    )
 };
 
 // -------------------------------------------------> LOGOUT
