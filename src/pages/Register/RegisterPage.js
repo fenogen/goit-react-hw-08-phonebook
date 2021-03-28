@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { registerUser } from './../../api/operation-register';
+import { selLoadingStatus } from './../../redux/phonebook/selectors';
 
 import style from './../../components/Phonebook/Form/Form.module.css';
 import './../../App.css';
@@ -128,12 +129,12 @@ class RegisterPage extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-
-// })
+const mapStateToProps = state => ({
+  loading: selLoadingStatus(state),
+});
 
 const mapDispatchToProps = dispatch => ({
   disFnRegister: value => dispatch(registerUser(value)),
 });
 
-export default connect(null, mapDispatchToProps)(RegisterPage);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
